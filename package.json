@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "dependencies": {
-    "express": "~3.4.x"
+    "express": "~5.2.x",
+    "morgan": "~1.10.x"
   },
   "engines": {
     "node": "24.x.x",

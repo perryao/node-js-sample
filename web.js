@@ -1,12 +1,21 @@
-var express = require('express');
-var app = express();
-app.use(express.logger());
+const express = require("express");
+const morgan = require("morgan");
 
-app.get('/', function(request, response) {
-  response.send('Hello World!');
+const app = express();
+app.use(morgan("combined"));
+
+app.get("/", (request, response) => {
+  response.send("Hello World!");
 });
 
-var port = process.env.PORT || 5000;
-app.listen(port, function() {
-  console.log("Listening on " + port);
+const port = process.env.PORT || 8080;
+const server = app.listen(port);
+
+server.on("listening", () => {
+  console.log(`Listening on ${port}`);
+});
+
+server.on("error", (err) => {
+  console.error(err.message);
+  process.exit(1);
 });
